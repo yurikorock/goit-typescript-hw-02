@@ -1,6 +1,14 @@
+import React from "react";
+
+import { Image } from "../App.types";
 import css from "./ImageCard.module.css";
 
-export default function ImageCard({ image, onImageClick }) {
+interface Prop {
+  image: Image;
+  onImageClick: (url: string) => void;
+}
+
+export default function ImageCard({ image, onImageClick }: Prop) {
   return (
     <div className={css.card} onClick={() => onImageClick(image.urls.regular)}>
       <img

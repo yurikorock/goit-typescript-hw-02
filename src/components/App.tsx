@@ -10,20 +10,23 @@ import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "./LoadMoreBtn/LoadMoreBtn.jsx";
 import ImageModal from "./ImageModal/ImageModal";
 
+import { Image } from "./App.types";
+import { number } from "yup";
+
 const App = () => {
-  const [query, setQuery] = useState("");
-  const [images, setImages] = useState([]);
-  const [error, setError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [page, setPage] = useState(1);
-  const loadMoreBtnRef = useRef(null);
-  const [hasMoreImage, setHasMoreImage] = useState(true);
+  const [query, setQuery] = useState<string>("");
+  const [images, setImages] = useState<Image[]>([]);
+  const [error, setError] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [page, setPage] = useState<number>(1);
+  const loadMoreBtnRef = useRef<HTMLDivElement | null>(null);
+  const [hasMoreImage, setHasMoreImage] = useState<boolean>(true);
 
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [isModalOpen, setModalOpen] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  const handleSearch = (newSearch) => {
+  const handleSearch = (newSearch: string): void => {
     setQuery(newSearch);
     setPage(1);
     setImages([]);
@@ -34,12 +37,12 @@ const App = () => {
     setPage((prevPage) => prevPage + 1);
   };
 
-  const openModal = (imageUrl) => {
+  const openModal = (imageUrl: string): void => {
     setSelectedImage(imageUrl);
     setModalOpen(true);
   };
 
-  const closeModal = () => {
+  const closeModal = (): void => {
     setModalOpen(false);
     setSelectedImage(null);
   };

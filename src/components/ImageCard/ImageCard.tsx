@@ -13,7 +13,7 @@ export default function ImageCard({ image, onImageClick }: Prop) {
     <div className={css.card} onClick={() => onImageClick(image.urls.regular)}>
       <img
         src={image.urls.small}
-        alt={image.alt_description}
+        alt={image.alt_description ?? "Image"}
         className={css.image}
       />
     </div>

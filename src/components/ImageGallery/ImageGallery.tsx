@@ -1,7 +1,14 @@
+import React from "react";
+import { Image } from "../App.types";
 import ImageCard from "../ImageCard/ImageCard";
 import css from "./ImageGallery.module.css";
 
-export default function ImageGallery({ images, onImageClick }) {
+interface Props {
+  images: Image[];
+  onImageClick: (url: string) => void;
+}
+
+export default function ImageGallery({ images, onImageClick }: Props) {
   return (
     <ul className={css.gallery}>
       {images.map((image, index) => (

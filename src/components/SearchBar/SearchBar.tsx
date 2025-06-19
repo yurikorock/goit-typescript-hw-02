@@ -1,14 +1,19 @@
+import React from "react";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import css from "./SearchBar.module.css";
 
-export default function SearchBar({ onSubmit }) {
-  const handleSubmit = (event) => {
+interface Props {
+  onSubmit: (value: string) => void;
+}
+
+export default function SearchBar({ onSubmit }: Props) {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
 
     const search = formData.get("search");
-    if (search.trim() === "") {
+    if (typeof search !== "string" || search.trim() === "") {
       toast.error("Необхідно ввести текст для пошуку зображень!", {
         duration: 1500,
         position: "top-right",

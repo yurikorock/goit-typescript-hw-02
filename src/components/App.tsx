@@ -21,7 +21,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [page, setPage] = useState<number>(1);
-  const loadMoreBtnRef = useRef<HTMLDivElement | null>(null);
+  const loadMoreBtnRef = useRef<HTMLButtonElement | null>(null);
   const [hasMoreImage, setHasMoreImage] = useState<boolean>(true);
 
   const [isModalOpen, setModalOpen] = useState<boolean>(false);

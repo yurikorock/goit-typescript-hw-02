@@ -5,14 +5,13 @@ import toast, { Toaster } from "react-hot-toast";
 
 import SearchBar from "./SearchBar/SearchBar";
 import ImageGallery from "./ImageGallery/ImageGallery";
-import { fetchImagesByQuery } from "./helpers/unsplashApi.js";
+import { fetchImagesByQuery } from "./helpers/unsplashApi";
 import Loader from "./Loader/Loader";
 import ErrorMessage from "./ErrorMessage/ErrorMessage";
-import LoadMoreBtn from "./LoadMoreBtn/LoadMoreBtn.jsx";
+import LoadMoreBtn from "./LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./ImageModal/ImageModal";
 
 import { Image } from "./App.types";
-import { number } from "yup";
 
 const App = () => {
   const [query, setQuery] = useState<string>("");
@@ -64,7 +63,7 @@ const App = () => {
       try {
         setError(false);
         setIsLoading(true);
-        const data = await fetchImagesByQuery(query, page);
+        const data: Image[] = await fetchImagesByQuery(query, page);
 
         if (data.length === 0) {
           setHasMoreImage(false);
